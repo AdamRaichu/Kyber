@@ -127,7 +127,7 @@ class _CollectionExportDialogState extends State<CollectionExportDialog> {
               total = modFiles.length - 1;
               await Future<void>.value().then((_) async {
                 print('Exporting collection with files');
-                final file = await FilePicker.platform.saveFile(
+                var file = await FilePicker.platform.saveFile(
                   allowedExtensions: ['tar'],
                   dialogTitle: 'Export Collection',
                   type: FileType.custom,
@@ -136,6 +136,11 @@ class _CollectionExportDialogState extends State<CollectionExportDialog> {
                 if (file == null) {
                   print('User cancelled');
                   return;
+                }
+
+                if (!file.endsWith('.tar')) {
+                  print('User omitted .tar extension, adding it automatically');
+                  file += '.tar';
                 }
 
                 final tempDir = await Directory.systemTemp.createTemp(

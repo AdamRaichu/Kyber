@@ -32,7 +32,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GH_PAT }}
           submodules: true
 
       - name: Setup MSBuild
@@ -92,7 +91,7 @@ jobs:
       - name: Install Protoc
         uses: arduino/setup-protoc@v3
         with:
-          repo-token: ${{ secrets.GH_PAT }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2.12.0

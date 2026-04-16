@@ -362,6 +362,9 @@ public:
     char _0x0067[9];       // 0x0067
 };
 
+class QuitGameEntityData : public EntityData
+{};
+
 enum PropertyDebugGraphMode
 {
     PropertyDebugGraphMode_Curve, // 0x0000
